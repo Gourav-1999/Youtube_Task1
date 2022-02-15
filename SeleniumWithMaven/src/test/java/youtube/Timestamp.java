@@ -8,6 +8,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -21,7 +22,7 @@ public class Timestamp {
 		driver = new ChromeDriver();
 
 		driver.get("https://www.google.com/");
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driver.findElement(By.xpath("//*[@name=\"q\"]")).sendKeys("Youtube");
 		driver.findElement(By.xpath("//*[@name=\"q\"]")).sendKeys(Keys.RETURN);
 		driver.findElement(By.xpath("(//*[text()=\"YouTube\"])[1]")).click();
@@ -33,9 +34,10 @@ public class Timestamp {
 		System.out.println(ftime);
 		int ctime = 0;
 		
-		WebElement music_player = driver.findElement(By.xpath("//*[@id=\"movie_player\"]"));
 		
-		while(ctime != ftime) {
+		WebElement music_player = driver.findElement(By.xpath("//*[@id=\"movie_player\"]"));
+		Thread.sleep(2050);
+		while(ftime != ctime) {
 			System.out.println("Waiting");
 			Thread.sleep(5000);
 			music_player.click();
